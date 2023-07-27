@@ -13,12 +13,16 @@ export function Home() {
 
       <View style={styles.body}>
         <View style={styles.inputSection}>
-          <TextInput style={styles.textInput}/>
-          <TouchableOpacity>
+          <TextInput
+            style={styles.textInput}
+            placeholder='Adicione uma nova tarefa'
+            placeholderTextColor={theme.color['gray-300']}
+          />
+          <TouchableOpacity style={styles.button}>
             <Ionicons
               name="md-checkmark"
               size={20}
-              color={theme.color.danger}
+              color={theme.color['gray-100']}
             />
           </TouchableOpacity>
         </View>

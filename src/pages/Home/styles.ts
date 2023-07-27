@@ -21,13 +21,28 @@ export const styles = StyleSheet.create({
   },
 
   inputSection:{
-    width: "90%",
-    marginTop: -27
+    width: 327,
+    marginTop: -27,
+    flexDirection: 'row',
+    gap: 4
   },
 
   textInput:{
     backgroundColor: theme.color['gray-500'],
-    height: 54
-  }
+    color: theme.color['gray-100'],
+    height: 54,
+    width: 271,
+    borderRadius: 8,
+    paddingLeft: 16,
+  },
+
+  button:{
+    backgroundColor: theme.color['blue-dark'],
+    height: 52,
+    width: 52,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8
+  },
 
 });
