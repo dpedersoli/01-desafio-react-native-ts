@@ -2,6 +2,7 @@ import { useFonts } from "expo-font";
 
 import { StatusBar } from 'expo-status-bar';
 import { Home } from './src/pages/Home';
+import { theme } from "./src/global/styles/theme";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,7 +17,11 @@ export default function App() {
   return (
     <>
       <Home/>
-      <StatusBar style="auto" />
+      <StatusBar
+        style='light'
+        backgroundColor={theme.color["gray-700"]}
+        translucent={false}
+      />
     </>
   );
 }
