@@ -34,6 +34,8 @@ export const styles = StyleSheet.create({
     width: 271,
     borderRadius: 8,
     paddingLeft: 16,
+    
+
   },
 
   button:{
