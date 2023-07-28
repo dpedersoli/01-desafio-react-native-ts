@@ -20,7 +20,7 @@ export function Home() {
           />
           <TouchableOpacity style={styles.button}>
             <Ionicons
-              name="md-checkmark"
+              name="add-circle-outline"
               size={20}
               color={theme.color['gray-100']}
             />
