@@ -1,4 +1,4 @@
-import { Image, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from '../../global/styles/theme';
@@ -44,6 +44,20 @@ export function Home() {
               color={theme.color['gray-100']}
             />
           </TouchableOpacity>
+        </View>
+
+        <View>
+          <View>
+            <Text>
+              Criadas <Text>0</Text>
+            </Text>
+          </View>
+
+          <View>
+            <Text>
+              Concluídas <Text>0</Text>
+            </Text>
+          </View>
         </View>
 
       </View>
