@@ -26,18 +26,22 @@ export function Home() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={require('../../assets/images/logo.png')}/>
-      </View>
+      </View> 
 
       <View style={styles.body}>
-        <View style={styles.inputSection}>
+        <View style={styles.addNewTaskContainer}>
           <TextInput
-            style={[styles.textInput, inputBorderInitialState, inputBorderFocus]}
+            style={[styles.addNewTaskInput, inputBorderInitialState, inputBorderFocus]}
             placeholder='Adicione uma nova tarefa'
             placeholderTextColor={theme.color['gray-300']}
             onFocus={() => onFocus()}
             onBlur={() => onBlur()}
           />
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.addNewTaskButton}
+            onPress={() => {}}
+            activeOpacity={0.8}
+          >
             <Ionicons
               name="add-circle-outline"
               size={20}
@@ -46,18 +50,31 @@ export function Home() {
           </TouchableOpacity>
         </View>
 
-        <View>
-          <View>
-            <Text>
-              Criadas <Text>0</Text>
-            </Text>
+        <View style={styles.taskCounterContainer}>
+          <View style={styles.createdTasksContainer}>
+            <Text style={styles.createdTasksText}> Criadas </Text>
+            <Text style={styles.tasksCounterSpan}> 0 </Text>
           </View>
 
-          <View>
-            <Text>
-              Concluídas <Text>0</Text>
-            </Text>
+          <View style={styles.doneTasksContainer}>
+            <Text style={styles.doneTasksText}> Concluídas </Text>
+            <Text style={styles.tasksCounterSpan}>0</Text>
           </View>
+        </View>
+
+        <View style={styles.noTasksContainer}>
+          <Ionicons
+            name="document-text-outline"
+            color={theme.color['gray-400']}
+            size={56}
+          />
+
+          <Text style={[styles.noTasksText, styles.noTasksTextBold]}>
+            Você ainda não tem tarefas cadastradas
+          </Text>
+          <Text style={styles.noTasksText}>
+            Crie tarefas e organize seus itens a fazer
+          </Text>
         </View>
 
       </View>
