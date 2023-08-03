@@ -83,4 +83,14 @@ export const styles = StyleSheet.create({
     marginLeft: 8
   },
 
+  noTasksContainer:{},
+
+  noTasksText:{},
+  
+  noTasksTextBold:{
+    fontWeight: 'bold',
+  },
+
+
+
 });
