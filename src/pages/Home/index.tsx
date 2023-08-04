@@ -1,4 +1,4 @@
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from '../../global/styles/theme';
@@ -23,7 +23,7 @@ export function Home() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Image source={require('../../assets/images/logo.png')}/>
       </View> 
@@ -53,7 +53,7 @@ export function Home() {
         <View style={styles.taskCounterContainer}>
           <View style={styles.createdTasksContainer}>
             <Text style={styles.createdTasksText}> Criadas </Text>
-            <Text style={styles.tasksCounterSpan}> 0 </Text>
+            <Text style={styles.tasksCounterSpan}>0</Text>
           </View>
 
           <View style={styles.doneTasksContainer}>
@@ -78,7 +78,7 @@ export function Home() {
         </View>
 
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

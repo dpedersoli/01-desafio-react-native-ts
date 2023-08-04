@@ -59,7 +59,6 @@ export const styles = StyleSheet.create({
   createdTasksText:{
     color: theme.color.blue,
     fontWeight: 'bold',
-    width: 55
   },
 
   doneTasksContainer:{
@@ -69,7 +68,6 @@ export const styles = StyleSheet.create({
   doneTasksText:{
     color: theme.color.purple,
     fontWeight: 'bold',
-    width: 80,
   },
 
   tasksCounterSpan:{
@@ -77,7 +75,8 @@ export const styles = StyleSheet.create({
     color: theme.color['gray-200'],
     fontWeight: 'bold',
     fontSize: 12,
-    paddingHorizontal: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
     borderRadius: 8,
     borderColor: theme.color['gray-400'],
     marginLeft: 8
@@ -85,7 +84,9 @@ export const styles = StyleSheet.create({
 
   noTasksContainer:{},
 
-  noTasksText:{},
+  noTasksText:{
+    color: theme.color['gray-300']
+  },
   
   noTasksTextBold:{
     fontWeight: 'bold',
