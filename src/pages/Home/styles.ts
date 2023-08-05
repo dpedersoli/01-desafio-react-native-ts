@@ -82,7 +82,25 @@ export const styles = StyleSheet.create({
     marginLeft: 8
   },
 
-  noTasksContainer:{},
+  listContainer:{
+    width: '83%',
+    marginTop: 20
+  },
+
+  noTasksContainer:{
+    width: '100%',
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderTopColor: theme.color['gray-400'],
+    borderTopEndRadius: 8,
+    borderTopStartRadius: 8,
+    alignItems: 'center',
+  },
+
+  icon:{
+    marginTop: 48,
+    marginBottom: 16
+  },
 
   noTasksText:{
     color: theme.color['gray-300']
@@ -91,7 +109,4 @@ export const styles = StyleSheet.create({
   noTasksTextBold:{
     fontWeight: 'bold',
   },
-
-
-
 });
