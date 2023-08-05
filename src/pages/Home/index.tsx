@@ -1,4 +1,4 @@
-import { Alert, FlatList, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, FlatList, SafeAreaView, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import { styles } from './styles';
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from '../../global/styles/theme';
@@ -10,7 +10,7 @@ export function Home() {
   const [ inputBorderInitialState, setInputBorderInitialState] = useState()
   const [ inputBorderFocus, setInputBorderFocus] = useState()
 
-  const [ list, setList ] = useState<string[]>(['valor'])
+  const [ list, setList ] = useState<string[]>([])
   const [ inputValue, setInputValue] = useState('')
 
   function onFocus() {
@@ -35,13 +35,12 @@ export function Home() {
     setInputValue('')
   }
 
-  function handleTaskRemove(name: string){
-    Alert.alert("Remover", `Deseja remover o participante ${name}?`, [
+  function handleTaskRemove(task: string){
+    Alert.alert("Remover", `Deseja remover a tarefa ${task}?`, [
       {
         text: 'Sim',
         onPress: () => {
-          setList(list.filter(participant => participant !== name))
-          Alert.alert("Participante deletado!")
+          setList(list.filter(item => item !== task))
         }
       },
       {
@@ -68,17 +67,17 @@ export function Home() {
             onChangeText={setInputValue}
             value={inputValue}
           />
-          <TouchableOpacity
+          <TouchableHighlight 
             style={styles.addNewTaskButton}
+            underlayColor={theme.color.blue}
             onPress={handleAddNewTask}
-            activeOpacity={0.8}
           >
             <Ionicons
               name="add-circle-outline"
               size={20}
               color={theme.color['gray-100']}
             />
-          </TouchableOpacity>
+          </TouchableHighlight >
         </View>
 
         <View style={styles.taskCounterContainer}>

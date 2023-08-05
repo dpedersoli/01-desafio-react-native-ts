@@ -22,5 +22,17 @@ export const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     color: theme.color['gray-300']
   },
+
+  trashIconBackground:{
+    borderRadius: 5,
+    width: 22,
+    height: 22,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  trashIcon:{
+    
+  },
   
 });

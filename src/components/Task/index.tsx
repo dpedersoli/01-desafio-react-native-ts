@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, TouchableHighlight } from "react-native";
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 import { Ionicons } from "@expo/vector-icons";
@@ -11,10 +11,20 @@ interface Props {
 
 export function Task({content, onRemove}: Props) {
   const [ isTaskDone, setIsTaskDone ] = useState(false)
-
+  const [ isTrashPressed, setIsTrashPressed ] = useState(false);
+  
   function handleTaskStatus() {
     setIsTaskDone(!isTaskDone)
   }
+  
+  const changeTrashIconColor = () => {
+    setIsTrashPressed(!isTrashPressed);
+  };
+
+  const removeTask = () => {
+    onRemove();
+    changeTrashIconColor();
+  }  
 
   return (
     <View style={styles.container}>
@@ -49,17 +59,17 @@ export function Task({content, onRemove}: Props) {
           </Text>
         }
       
-      <TouchableOpacity
-        onPress={onRemove}
-        style={ styles.trashIcon }
-        activeOpacity={0.8}
+      <TouchableHighlight
+        onPress={removeTask}
+        style={ styles.trashIconBackground }
+        underlayColor={theme.color["gray-400"]}
       >
         <Ionicons
           name="trash-outline"
-          color={theme.color['gray-300']}
+          color={isTrashPressed ? theme.color.danger : theme.color['gray-300'] }
           size={14}
         />
-      </TouchableOpacity>
+      </TouchableHighlight>
     </View>
   )
 }
