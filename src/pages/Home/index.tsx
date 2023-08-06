@@ -36,18 +36,7 @@ export function Home() {
   }
 
   function handleTaskRemove(task: string){
-    Alert.alert("Remover", `Deseja remover a tarefa ${task}?`, [
-      {
-        text: 'Sim',
-        onPress: () => {
-          setList(list.filter(item => item !== task))
-        }
-      },
-      {
-        text: 'Não',
-        style: 'cancel' 
-      }
-    ]) 
+    setList(list.filter(item => item !== task))
   }
 
   return (

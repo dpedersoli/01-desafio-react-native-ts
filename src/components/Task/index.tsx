@@ -7,14 +7,19 @@ import { useState } from "react";
 interface Props {
   content: string
   onRemove: () => void
+  taskStatus?: "done" | "undone"
 }
 
-export function Task({content, onRemove}: Props) {
-  const [ isTaskDone, setIsTaskDone ] = useState(false)
+export function Task({content, onRemove, taskStatus = 'undone'}: Props) {
+  const [ isTaskDone, setIsTaskDone ] = useState(taskStatus);
   const [ isTrashPressed, setIsTrashPressed ] = useState(false);
   
   function handleTaskStatus() {
-    setIsTaskDone(!isTaskDone)
+    if(isTaskDone == 'undone'){
+      return setIsTaskDone('done')
+    }
+
+    return setIsTaskDone('undone')
   }
   
   const changeTrashIconColor = () => {
@@ -32,24 +37,15 @@ export function Task({content, onRemove}: Props) {
         onPress={handleTaskStatus}
         activeOpacity={0.8}
       >
-        {
-          isTaskDone ? 
-          <Ionicons
-            name="checkmark-circle"
-            color={theme.color["purple-dark"]}
-            size={18}
-          />
-          :
-          <Ionicons
-            name="ellipse-outline"
-            color={theme.color.blue}
-            size={18}
-          />
-        }
+        <Ionicons
+          name={isTaskDone == 'undone' ? "ellipse-outline" : "checkmark-circle"}
+          color={isTaskDone == 'undone' ? theme.color.blue : theme.color["purple-dark"] }
+          size={18}
+        />
       </TouchableOpacity>
 
         {
-          isTaskDone ?
+          isTaskDone == 'done' ?
           <Text style={[styles.taskContent, styles.doneTask]}>
             {content}
           </Text>
