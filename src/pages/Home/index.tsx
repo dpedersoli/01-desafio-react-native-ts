@@ -1,62 +1,77 @@
-import { Alert, FlatList, SafeAreaView, Text, TextInput, TouchableHighlight, View } from 'react-native';
-import { styles } from './styles';
 import { Ionicons } from "@expo/vector-icons";
-import { theme } from '../../global/styles/theme';
-import { useState } from 'react';
-import Logo from '../../assets/svg/logo';
-import { Task } from '../../components/Task';
+import { useState } from "react";
+import {
+  Alert,
+  FlatList,
+  SafeAreaView,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View,
+} from "react-native";
+import Logo from "../../assets/svg/logo";
+import { Task } from "../../components/Task";
+import { theme } from "../../global/styles/theme";
+import { styles } from "./styles";
 
 export function Home() {
-  const [ inputBorderInitialState, setInputBorderInitialState] = useState()
-  const [ inputBorderFocus, setInputBorderFocus] = useState()
+  const [inputBorderInitialState, setInputBorderInitialState] = useState();
+  const [inputBorderFocus, setInputBorderFocus] = useState();
 
-  const [ list, setList ] = useState<string[]>([])
-  const [ inputValue, setInputValue] = useState('')
+  const [list, setList] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState("");
 
   function onFocus() {
     setInputBorderFocus({
       borderWidth: 1,
-      borderColor: theme.color['purple-dark']
-    })
+      borderColor: theme.color["purple-dark"],
+    });
   }
 
   function onBlur() {
     setInputBorderFocus({
-      borderWidth: 0
-    })
+      borderWidth: 0,
+    });
   }
 
   function handleAddNewTask() {
-    if(list.includes(inputValue)){
-      return Alert.alert(`Participante ${inputValue} existe", "Já existe um participante na lista com esse nome`) 
+    if (list.includes(inputValue)) {
+      return Alert.alert(
+        `Participante ${inputValue} existe", "Já existe um participante na lista com esse nome`
+      );
     }
 
-    setList(prevState => [...prevState, inputValue])
-    setInputValue('')
+    setList((prevState) => [...prevState, inputValue]);
+    setInputValue("");
   }
 
-  function handleTaskRemove(task: string){
-    setList(list.filter(item => item !== task))
+  function handleTaskRemove(task: string) {
+    setList(list.filter((item) => item !== task));
   }
+  //teste
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Logo/>
-      </View> 
+        <Logo />
+      </View>
 
       <View style={styles.body}>
         <View style={styles.addNewTaskContainer}>
           <TextInput
-            style={[styles.addNewTaskInput, inputBorderInitialState, inputBorderFocus]}
-            placeholder='Adicione uma nova tarefa'
-            placeholderTextColor={theme.color['gray-300']}
+            style={[
+              styles.addNewTaskInput,
+              inputBorderInitialState,
+              inputBorderFocus,
+            ]}
+            placeholder="Adicione uma nova tarefa"
+            placeholderTextColor={theme.color["gray-300"]}
             onFocus={() => onFocus()}
             onBlur={() => onBlur()}
             onChangeText={setInputValue}
             value={inputValue}
           />
-          <TouchableHighlight 
+          <TouchableHighlight
             style={styles.addNewTaskButton}
             underlayColor={theme.color.blue}
             onPress={handleAddNewTask}
@@ -64,9 +79,9 @@ export function Home() {
             <Ionicons
               name="add-circle-outline"
               size={20}
-              color={theme.color['gray-100']}
+              color={theme.color["gray-100"]}
             />
-          </TouchableHighlight >
+          </TouchableHighlight>
         </View>
 
         <View style={styles.taskCounterContainer}>
@@ -84,7 +99,7 @@ export function Home() {
         <FlatList
           style={styles.listContainer}
           data={list}
-          keyExtractor={item => item}
+          keyExtractor={(item) => item}
           renderItem={({ item }) => (
             <Task
               key={item}
@@ -97,9 +112,9 @@ export function Home() {
             <View style={styles.noTasksContainer}>
               <Ionicons
                 name="document-text-outline"
-                color={theme.color['gray-400']}
+                color={theme.color["gray-400"]}
                 size={56}
-                style={ styles.icon }
+                style={styles.icon}
               />
 
               <Text style={[styles.noTasksText, styles.noTasksTextBold]}>
@@ -111,9 +126,7 @@ export function Home() {
             </View>
           )}
         />
-
       </View>
     </SafeAreaView>
   );
 }
-
