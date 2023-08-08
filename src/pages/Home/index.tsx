@@ -48,7 +48,6 @@ export function Home() {
   function handleTaskRemove(task: string) {
     setList(list.filter((item) => item !== task));
   }
-  //teste
 
   return (
     <SafeAreaView style={styles.container}>
