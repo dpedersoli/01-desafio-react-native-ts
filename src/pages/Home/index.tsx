@@ -17,9 +17,10 @@ import { styles } from "./styles";
 export function Home() {
   const [inputBorderInitialState, setInputBorderInitialState] = useState();
   const [inputBorderFocus, setInputBorderFocus] = useState();
-
   const [list, setList] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [isTaskChecked, setIsTaskChecked] = useState(false);
+  const [taskDoneCounter, setTaskDoneCounter] = useState(0);
 
   function onFocus() {
     setInputBorderFocus({
@@ -45,8 +46,24 @@ export function Home() {
     setInputValue("");
   }
 
+  function handleTaskStatus() {
+    setIsTaskChecked(!isTaskChecked);
+  }
+
+  function taskCounter(taskToCount: boolean) {
+    if (!taskToCount) {
+      setTaskDoneCounter(taskDoneCounter + 1);
+    } else if (taskToCount) {
+      setTaskDoneCounter(taskDoneCounter - 1);
+    }
+  }
+
   function handleTaskRemove(task: string) {
     setList(list.filter((item) => item !== task));
+
+    if (taskDoneCounter >= list.length) {
+      setTaskDoneCounter(taskDoneCounter - 1);
+    }
   }
 
   return (
@@ -91,7 +108,7 @@ export function Home() {
 
           <View style={styles.doneTasksContainer}>
             <Text style={styles.doneTasksText}> Concluídas </Text>
-            <Text style={styles.tasksCounterSpan}>0</Text>
+            <Text style={styles.tasksCounterSpan}>{taskDoneCounter}</Text>
           </View>
         </View>
 
@@ -104,6 +121,9 @@ export function Home() {
               key={item}
               content={item}
               onRemove={() => handleTaskRemove(item)}
+              taskStatus={isTaskChecked}
+              onStatus={handleTaskStatus}
+              onTaskCount={taskCounter}
             />
           )}
           showsVerticalScrollIndicator={false}
