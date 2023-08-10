@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   View,
 } from "react-native";
+
 import Logo from "../../assets/svg/logo";
 import { Task } from "../../components/Task";
 import { theme } from "../../global/styles/theme";
