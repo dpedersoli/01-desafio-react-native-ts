@@ -1,0 +1,16 @@
+## A página tem como base um desafio, que consiste em:
+
+**1.** Adicionar uma nova tarefa
+
+**2.** Marcar e desmarcar uma tarefa como concluída
+
+**3.** Remover uma tarefa da listagem
+
+**4.** Mostrar o progresso de conclusão das tarefas
+
+## O que foi aproveitado no projeto:
+
+- React Native;
+- Typescript;
+- StyleSheet;
+- Regras e técnicas de Clean Code;
